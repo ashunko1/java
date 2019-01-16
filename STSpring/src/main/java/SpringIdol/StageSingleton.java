@@ -12,4 +12,12 @@ public class StageSingleton {
     public static StageSingleton getInstance(){
         return StageSingletonInstance.instance;
     }
+
+    public void initMethod(){
+        System.out.println("begin init method ...");
+    }
+
+    public void destroyMethod(){
+        System.out.println("... end desctoy method");
+    }
 }

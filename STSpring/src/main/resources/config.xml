@@ -1,8 +1,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                            http://www.springframework.org/schema/util
+                            http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id = "duke" class = "SpringIdol.Juggler">
         <constructor-arg value="15"/>
@@ -15,6 +21,53 @@
         <constructor-arg  ref="sonnet29"/>
     </bean>
 
-    <bean id = "beanFromFactory" class = "SpringIdol.StageSingleton" factory-method="getInstance"/>
+    <!--<bean id = "beanFromFactory" class = "SpringIdol.StageSingleton"-->
+          <!--factory-method="getInstance"-->
+          <!--init-method="initMethod"-->
+          <!--destroy-method="destroyMethod"-->
+    <!--/>-->
+
+    <bean id = "piano" class = "SpringIdol.Piano"/>
+    <bean id = "guitar" class = "SpringIdol.Guitar"/>
+
+    <!--<bean id = "JaryInstrumentalist" class = "SpringIdol.Instrumentalist">-->
+        <!--<property name="song" value="kalinka malinka"></property>-->
+        <!--<property name="instruments">-->
+            <!--<bean id = "piano" class = "SpringIdol.Piano"/>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <util:list id="cities">
+        <bean class = "SpringIdol.City"
+              p:name = "Minsk" p:state = "Minskaya oblast" p:population = "2102456"/>
+        <bean class = "SpringIdol.City"
+              p:name = "Mogilev" p:state = "Mogilevskaya oblast" p:population = "236545"/>
+        <bean class = "SpringIdol.City"
+              p:name = "Gomel" p:state = "Gomelskaya oblast" p:population = "569123"/>
+        <bean class = "SpringIdol.City"
+              p:name = "Grodno" p:state = "Grodnensskaya oblast" p:population = "456852"/>
+        <bean class = "SpringIdol.City"
+              p:name = "Vitebsk" p:state = "Vitebskskaya oblast" p:population = "356985"/>
+        <bean class = "SpringIdol.City"
+              p:name = "Brest" p:state = "Brestskaya oblast" p:population = "125632"/>
+    </util:list>
+
+    <bean id = "BobMultiBand" class = "SpringIdol.MultiInstrumentalist">
+        <property name="instrumentsMap">
+            <map>
+                <entry key="piano" value-ref="piano"/>
+                <entry key="guitar" value-ref="guitar"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id = "myScaner" class="SpringIdol.MyScanner"
+          factory-method="getInstance">
+    </bean>
+
+    <bean id = "finderCity" class="SpringIdol.CityInfo">
+        <property name="city" value="#{cities[T(SpringIdol.MyScanner).getInstance().getScan().nextInt()]}"></property>
+    </bean>
 
 </beans>
+
