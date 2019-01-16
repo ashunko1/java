@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <bean id = "duke" class = "SpringIdol.Juggler">
+        <constructor-arg value="15"/>
+    </bean>
+
+    <bean id = "sonnet29" class = "SpringIdol.Sonnet29"/>
+
+    <bean id = "superDuke" class = "SpringIdol.PoeticJuggle">
+        <constructor-arg value="15"/>
+        <constructor-arg  ref="sonnet29"/>
+    </bean>
+
+    <bean id = "beanFromFactory" class = "SpringIdol.StageSingleton" factory-method="getInstance"/>
+
+</beans>
