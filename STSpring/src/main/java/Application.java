@@ -24,5 +24,7 @@ public class Application {
 
         CityInfo cityInfo = (CityInfo)context.getBean("finderCity");
         cityInfo.showInfo();
+
+        //тест в develop
     }
 }
