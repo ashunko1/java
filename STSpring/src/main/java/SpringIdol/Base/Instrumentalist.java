@@ -1,7 +1,12 @@
 package SpringIdol;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class Instrumentalist implements Perfomer{
 
+    @Autowired
+    @Qualifier("piano")
     private Instruments instruments;
     private  String song;
 

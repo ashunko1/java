@@ -1,7 +1,9 @@
 package SpringIdol;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Juggler implements Perfomer {
-    private int beanBags = 3;
+    private int beanBags;// = 3;
 
     public Juggler() {
     }
